@@ -12,6 +12,21 @@ end
 
 def create_certificate
   self.subject = @x509_subject.to_s
+
+  key = OpenSSL::PKey::RSA.generate(1024)
+  pub = key.public_key
+  cert = OpenSSL::X509::Certificate.new
+  cert.version = 2
+  #replace with a setting value (what happens when you delete something?)
+  serial = Certificate.maximum(:id) + 1
+  cert.serial = serial
+  cert.subject = @x509_subject
+  cert.issuer = @x509_subject
+  cert.public_key = pub
+  cert.not_before = self.not_before
+  cert.not_after = self.not_after
+  File.open("public/certificates/cert-"+serial.to_s+".pem", "w") {|f| f.write key.send("to_pem") }
+  File.open("public/certificates/key-"+serial.to_s+".pem", "w") {|f| f.write cert.send("to_pem") }
 end
 
 def country
