@@ -6,9 +6,11 @@ class CertificateController < ApplicationController
   end
 
   def new
+    @certificate = Certificate.new
   end
 
   def create
+    certificate = Certificate.new
   end
 
   def destroy
