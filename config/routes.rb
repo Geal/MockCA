@@ -1,4 +1,14 @@
 MockCA::Application.routes.draw do
+  get "certificate/index"
+
+  get "certificate/show"
+
+  get "certificate/new"
+
+  get "certificate/create"
+
+  get "certificate/destroy"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
