@@ -3,6 +3,7 @@ class CertificateController < ApplicationController
   end
 
   def show
+    @certificate = Certificate.find(params[:id])
   end
 
   def new

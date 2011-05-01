@@ -1,2 +1,9 @@
 <h1>Certificate#show</h1>
-<p>Find me in app/views/certificate/show.html.erb</p>
+<p>Subject: <%= @certificate.subject %></p>
+<p>Issuer: <%= @certificate.issuer %></p>
+<p>Serial: <%= @certificate.serial %></p>
+<p>Version: <%= @certificate.version %></p>
+<p>Not before: <%= @certificate.not_before %></p>
+<p>Not after: <%= @certificate.not_after %></p>
+<p>Signature algorithm: <%= @certificate.signature_algorithm %></p>
+
