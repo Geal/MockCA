@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  subject: MyString
+  issuer: MyString
+  serial: 1
+  version: 1
+  signature_algorithm: MyString
+  not_before: 2011-05-01 14:59:49
+  not_after: 2011-05-01 14:59:49
+
+two:
+  subject: MyString
+  issuer: MyString
+  serial: 1
+  version: 1
+  signature_algorithm: MyString
+  not_before: 2011-05-01 14:59:49
+  not_after: 2011-05-01 14:59:49
