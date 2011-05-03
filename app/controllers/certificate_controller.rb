@@ -10,6 +10,10 @@ class CertificateController < ApplicationController
     @certificate = Certificate.new
   end
 
+  def new_root
+    @certificate = Certificate.new
+  end
+
   def create
     @certificate = Certificate.new(params[:certificate])
 

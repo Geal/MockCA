@@ -1,0 +1,64 @@
+<h1>Certificate#new</h1>
+<%= form_for @certificate do |f| %>
+<% if @certificate.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@certificate.errors.count, "error") %> prohibited this certificate from being saved:</h2>
+
+      <ul>
+      <% @certificate.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :country %>
+    <%= f.text_field :country %>
+  </div>
+
+  <div class="field">
+    <%= f.label :state %>
+    <%= f.text_field :state %>
+  </div>
+
+  <div class="field">
+    <%= f.label :city %>
+    <%= f.text_field :city %>
+  </div>
+
+  <div class="field">
+    <%= f.label :organization_name %>
+    <%= f.text_field :organization_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :organizational_unit_name %>
+    <%= f.text_field :organizational_unit_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :common_name %>
+    <%= f.text_field :common_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email_address %>
+    <%= f.text_field :email_address %>
+  </div>
+
+  <div class="field">
+    <%= f.label :not_before %>
+    <%= f.datetime_select :not_before %>
+  </div>
+
+  <div class="field">
+    <%= f.label :not_after %>
+    <%= f.datetime_select :not_after %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
