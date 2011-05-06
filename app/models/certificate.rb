@@ -12,13 +12,15 @@ end
 
 def create_certificate
   self.subject = @x509_subject.to_s
-
+  self.issuer = "/CN=pouet"
   key = OpenSSL::PKey::RSA.generate(1024)
   pub = key.public_key
   cert = OpenSSL::X509::Certificate.new
   cert.version = 2
+  self.version = 2
   #replace with a setting value (what happens when you delete something?)
   serial = Certificate.maximum(:id) + 1
+  self.serial = serial
   cert.serial = serial
   cert.subject = @x509_subject
   cert.issuer = @x509_subject
@@ -33,13 +35,15 @@ end
 
 def create_root_certificate
   self.subject = @x509_subject.to_s
-
+  self.issuer = @x509_subject.to_s
   key = OpenSSL::PKey::RSA.generate(1024)
   pub = key.public_key
   cert = OpenSSL::X509::Certificate.new
   cert.version = 2
+  self.version = 2
   #replace with a setting value (what happens when you delete something?)
-  serial =  1
+  serial =  Certificate.maximum(:id) + 1
+  self.serial = serial
   cert.serial = serial
   cert.subject = @x509_subject
   cert.issuer = @x509_subject
@@ -52,7 +56,7 @@ def create_root_certificate
   cert.extensions = [
     ef.create_extension("basicConstraints","CA:TRUE", true),
     ef.create_extension("subjectKeyIdentifier", "hash"),
-    # ef.create_extension("keyUsage", "cRLSign,keyCertSign", true),
+    ef.create_extension("keyUsage", "cRLSign,keyCertSign", true),
   ]
   cert.add_extension ef.create_extension("authorityKeyIdentifier",
                                        "keyid:always,issuer:always")
