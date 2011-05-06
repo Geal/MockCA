@@ -1,5 +1,6 @@
 MockCA::Application.routes.draw do
   get '/certificates', :controller => 'certificate', :action => 'index', :as => 'certificates'
+  post 'certificates_root', :controller => 'certificate', :action => 'create_root', :as => 'certificates_root'
   post 'certificates', :controller => 'certificate', :action => 'create', :as => 'certificates'
   get 'certificate/new'
   get 'certificate/:id', :controller => 'certificate', :action => 'show', :as => 'certificate'
