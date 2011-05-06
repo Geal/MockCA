@@ -1,5 +1,6 @@
 class CertificateController < ApplicationController
   def index
+    @certificates = Certificate.all
   end
 
   def show
