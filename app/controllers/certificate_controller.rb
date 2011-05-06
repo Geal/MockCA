@@ -18,8 +18,20 @@ class CertificateController < ApplicationController
     @certificate = Certificate.new(params[:certificate])
 
     respond_to do |format|
-      if @certificate.save
+      if @certificate.create_certificate
         format.html { redirect_to(@certificate, :notice => 'Certificate was successfully created.') }
+      else
+        format.html { render :action => "new" }
+      end
+    end
+  end
+
+  def create_root
+    @certificate = Certificate.new(params[:certificate])
+
+    respond_to do |format|
+      if @certificate.create_root_certificate
+       format.html { redirect_to(@certificate, :notice => 'Certificate was successfully created.') }
       else
         format.html { render :action => "new" }
       end

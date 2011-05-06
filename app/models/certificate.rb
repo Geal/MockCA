@@ -2,7 +2,7 @@ require 'openssl'
 
 class Certificate < ActiveRecord::Base
 #before_create :create_x509_name
-before_save :create_root_certificate
+#before_save :create_root_certificate
 
 #def create_x509_name
 def initialize(args = nil)
@@ -28,6 +28,7 @@ def create_certificate
 
   File.open("public/certificates/key-"+serial.to_s+".pem", "w") {|f| f.write key.send("to_pem") }
   File.open("public/certificates/cert-"+serial.to_s+".pem", "w") {|f| f.write cert.send("to_pem") }
+  self.save
 end
 
 def create_root_certificate
@@ -59,7 +60,7 @@ def create_root_certificate
   cert.sign key, OpenSSL::Digest::SHA1.new
   File.open("public/certificates/cert-"+serial.to_s+".pem", "w") {|f| f.write key.send("to_pem") }
   File.open("public/certificates/key-"+serial.to_s+".pem", "w") {|f| f.write cert.send("to_pem") }
-
+  self.save
 end
 
 def country
