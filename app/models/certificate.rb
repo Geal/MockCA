@@ -105,6 +105,23 @@ def organizational_unit_name=(oguname)
   @x509_subject.add_entry('OU', oguname)
 end
 
+
+def CN
+  subject = OpenSSL::X509::Name.parse(self.subject).to_a
+  subject_h = Hash[*subject.collect { |v|
+      [v[0], v[1]]
+  }.flatten]
+  subject_h['CN']
+end
+
+def issuer_CN
+  issuer = OpenSSL::X509::Name.parse(self.issuer).to_a
+  issuer_h = Hash[*issuer.collect { |v|
+      [v[0], v[1]]
+  }.flatten]
+  issuer_h['CN']
+end
+
 def common_name
 end
 

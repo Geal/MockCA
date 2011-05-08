@@ -9,6 +9,6 @@
       %td
         - if certificate.ca  
           CA: 
-        = link_to certificate.subject, certificate
+        = link_to certificate.CN, certificate
       %td= certificate.issuer
       %td= certificate.not_after
