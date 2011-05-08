@@ -23,7 +23,7 @@ def create_certificate
   self.serial = serial
   cert.serial = serial
   cert.subject = @x509_subject
-  cert.issuer = @x509_subject
+  cert.issuer = OpenSSL::X509::Name.parse(@issuer.subject)
   cert.public_key = pub
   cert.not_before = self.not_before
   cert.not_after = self.not_after
