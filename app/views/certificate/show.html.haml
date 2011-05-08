@@ -16,3 +16,6 @@
   Not after: #{@certificate.not_after}
 %p
   Signature algorithm: #{@certificate.signature_algorithm}
+%p
+  = link_to "Download the key", "/certificates/key-"+@certificate.serial.to_s+".pem"
+  = link_to "Download the certificate", "/certificates/cert-"+@certificate.serial.to_s+".pem"
