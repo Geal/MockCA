@@ -9,6 +9,8 @@ gem 'sqlite3'
 
 gem "haml"
 
+gem "compass", ">= 0.11.1"
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
