@@ -12,7 +12,7 @@ end
 
 def create_certificate
   self.subject = @x509_subject.to_s
-  self.issuer = "/CN=pouet"
+  self.issuer = @issuer.subject
   key = OpenSSL::PKey::RSA.generate(1024)
   pub = key.public_key
   cert = OpenSSL::X509::Certificate.new
@@ -28,6 +28,8 @@ def create_certificate
   cert.not_before = self.not_before
   cert.not_after = self.not_after
 
+  issuer_key = OpenSSL::PKey::RSA.new(File.read("public/certificates/key-"+@issuer.serial.to_s+".pem"))
+  cert.sign issuer_key, OpenSSL::Digest::SHA1.new
   File.open("public/certificates/key-"+serial.to_s+".pem", "w") {|f| f.write key.send("to_pem") }
   File.open("public/certificates/cert-"+serial.to_s+".pem", "w") {|f| f.write cert.send("to_pem") }
   self.save
@@ -43,7 +45,7 @@ def create_root_certificate
   cert.version = 2
   self.version = 2
   #replace with a setting value (what happens when you delete something?)
-  serial =  Certificate.maximum(:id) + 1
+  serial = Certificate.maximum(:id) + 1
   self.serial = serial
   cert.serial = serial
   cert.subject = @x509_subject
@@ -63,8 +65,8 @@ def create_root_certificate
                                        "keyid:always,issuer:always")
 
   cert.sign key, OpenSSL::Digest::SHA1.new
-  File.open("public/certificates/cert-"+serial.to_s+".pem", "w") {|f| f.write key.send("to_pem") }
-  File.open("public/certificates/key-"+serial.to_s+".pem", "w") {|f| f.write cert.send("to_pem") }
+  File.open("public/certificates/key-"+serial.to_s+".pem", "w") {|f| f.write key.send("to_pem") }
+  File.open("public/certificates/cert-"+serial.to_s+".pem", "w") {|f| f.write cert.send("to_pem") }
   self.save
 end
 
@@ -134,6 +136,14 @@ end
 
 def email_address=(email)
   @x509_subject.add_entry('emailAddress', email)
+end
+
+def issuer_id
+end
+
+def issuer_id=(issuer)
+  @issuer = Certificate.find(issuer)
+  logger.info "issuer: "+@issuer.CN
 end
 
 end

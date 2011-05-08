@@ -9,6 +9,7 @@ class CertificateController < ApplicationController
 
   def new
     @certificate = Certificate.new
+    @CAs = Certificate.where("ca = ?", true)
   end
 
   def new_root

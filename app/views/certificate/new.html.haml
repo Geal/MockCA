@@ -9,6 +9,9 @@
         - @certificate.errors.full_messages.each do |msg|
           %li= msg
   .field
+    = f.label :issuer
+    = f.select :issuer_id, @CAs.collect {|p| [ p.CN, p.id ] }
+  .field
     = f.label :country
     = f.text_field :country
   .field
