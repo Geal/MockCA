@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110501125949) do
+ActiveRecord::Schema.define(:version => 20110508152302) do
 
   create_table "certificates", :force => true do |t|
     t.string   "subject"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20110501125949) do
     t.datetime "not_after"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "ca",                  :default => false
   end
 
 end
