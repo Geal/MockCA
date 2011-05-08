@@ -1,4 +1,4 @@
-%h1 Certificate#index
+%h2 Certificate list
 %table
   %tr
     %th Subject
@@ -6,6 +6,6 @@
     %th Valid until
   - @certificates.each do |certificate|
     %tr
-      %td= certificate.subject
+      %td= link_to certificate.subject, certificate
       %td= certificate.issuer
       %td= certificate.not_after
