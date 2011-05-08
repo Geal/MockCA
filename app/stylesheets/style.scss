@@ -44,7 +44,7 @@ h2 {
   width: 100%;
 }
 
-#menu a {
+#menu li a {
   background: #de7a08;
   border-bottom: 1px solid #393939;
   color: #fff;
@@ -59,7 +59,7 @@ h2 {
   font-variant: small-caps;
 }
 
-#menu a:hover {
+#menu li a:hover {
   background: #333;
   color: #ccc;
   padding-bottom: 8px;
@@ -76,3 +76,10 @@ h2 {
   text-shadow: #232323 0px 2px 2px;
   font-variant: small-caps;
 }
+
+#author a {
+  text-decoration: none;
+  color: #444444;
+}
+
+

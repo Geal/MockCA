@@ -20,7 +20,9 @@
           %li= link_to "New root CA", root_certificate_path
           %li= link_to "New certificate", certificate_new_path
         #author
-          Developed by Geoffroy Couprie
+          Development by
+          %br
+          %a{:href => "http://www.duckception.com"} Geoffroy Couprie
       .span-20.last
         = yield
 
