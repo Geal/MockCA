@@ -9,4 +9,18 @@
     = javascript_include_tag :defaults
     = csrf_meta_tag
   %body
-    = yield
+    .container
+      .span-24#header
+        %h1 MockCA
+        %hr
+        .alt Create and manage certificates easily
+        %hr
+      .span-4
+        = link_to "Certificate list", certificates_path
+        = link_to "Create a new root certificate authority", root_certificate_path
+        = link_to "Create a new certificate", certificate_new_path
+      .span-20.last
+        = yield
+      .span-24#footer
+        Developed by Geoffroy Couprie
+
