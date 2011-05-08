@@ -1,0 +1,11 @@
+%h1 Certificate#index
+%table
+  %tr
+    %th Subject
+    %th Issuer
+    %th Valid until
+  - @certificates.each do |certificate|
+    %tr
+      %td= certificate.subject
+      %td= certificate.issuer
+      %td= certificate.not_after

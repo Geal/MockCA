@@ -1,0 +1,15 @@
+%h1 Certificate#show
+%p
+  Subject: #{@certificate.subject}
+%p
+  Issuer: #{@certificate.issuer}
+%p
+  Serial: #{@certificate.serial}
+%p
+  Version: #{@certificate.version}
+%p
+  Not before: #{@certificate.not_before}
+%p
+  Not after: #{@certificate.not_after}
+%p
+  Signature algorithm: #{@certificate.signature_algorithm}
