@@ -6,6 +6,9 @@
     %th Valid until
   - @certificates.each do |certificate|
     %tr
-      %td= link_to certificate.subject, certificate
+      %td
+        - if certificate.ca  
+          CA: 
+        = link_to certificate.subject, certificate
       %td= certificate.issuer
       %td= certificate.not_after

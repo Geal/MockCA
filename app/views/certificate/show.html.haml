@@ -1,4 +1,7 @@
-%h2= @certificate.subject
+%h2
+  - if @certificate.ca
+    CA:
+  = @certificate.subject
 %p
   Subject: #{@certificate.subject}
 %p

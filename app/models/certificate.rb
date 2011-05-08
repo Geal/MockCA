@@ -34,6 +34,7 @@ def create_certificate
 end
 
 def create_root_certificate
+  self.ca = true
   self.subject = @x509_subject.to_s
   self.issuer = @x509_subject.to_s
   key = OpenSSL::PKey::RSA.generate(1024)
