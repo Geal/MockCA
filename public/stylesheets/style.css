@@ -126,3 +126,9 @@ h2 {
   text-decoration: none;
   color: #444444;
 }
+
+/* line 85, ../../app/stylesheets/style.scss */
+.field {
+  text-align: right;
+  margin-right: 200px;
+}
