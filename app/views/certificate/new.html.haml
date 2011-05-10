@@ -37,6 +37,6 @@
     = f.datetime_select :not_before
   .field
     = f.label :not_after
-    = f.datetime_select :not_after
+    = f.datetime_select :not_after, :default => 1.year.from_now
   .actions
     = f.submit
