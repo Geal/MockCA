@@ -19,7 +19,7 @@ def create_certificate
   cert.version = 2
   self.version = 2
   #replace with a setting value (what happens when you delete something?)
-  serial = Certificate.maximum(:id) + 1
+  serial = Certificate.count
   self.serial = serial
   cert.serial = serial
   cert.subject = @x509_subject
@@ -45,7 +45,7 @@ def create_root_certificate
   cert.version = 2
   self.version = 2
   #replace with a setting value (what happens when you delete something?)
-  serial = Certificate.maximum(:id) + 1
+  serial = Certificate.count
   self.serial = serial
   cert.serial = serial
   cert.subject = @x509_subject
